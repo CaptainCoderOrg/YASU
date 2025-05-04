@@ -20683,6 +20683,63 @@ MonoBehaviour:
   _scrollRate: {x: 0.75, y: 1}
   _scale: {x: 0.0125, y: 0.008333334}
   _offset: {x: 0, y: -0.2}
+--- !u!1001 &1029453254916539685
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932463531369995925, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305154665379119267, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
+      propertyPath: m_Name
+      value: SpiderBot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 337de268bf87a1049b1f2cf26da866b0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -20696,3 +20753,4 @@ SceneRoots:
   - {fileID: 98033132}
   - {fileID: 517350143}
   - {fileID: 1304444813}
+  - {fileID: 1029453254916539685}
