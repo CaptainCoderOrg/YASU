@@ -74,17 +74,22 @@ public class CharacterController2D : MonoBehaviour
 			{
 				m_Grounded = true;
 				if (!wasGrounded)
+				{
 					OnLandEvent.Invoke();
+					
+				}
+					
 			}
 		}
 		if (!m_Grounded)
 		{
 			_timeInAir += Time.fixedDeltaTime;
 		}
-		else
+		else if(_timeInAir != _coyoteDelay) // Don't set to 0 when jump has started
 		{
 			_timeInAir = 0;
 		}
+		
 	}
 
 
@@ -157,7 +162,6 @@ public class CharacterController2D : MonoBehaviour
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			_timeInAir = _coyoteDelay;
-			// _timeInAir = _coyoteDelay;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
         IsCrouching = crouch;

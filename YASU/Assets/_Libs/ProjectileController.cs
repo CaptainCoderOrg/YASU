@@ -17,7 +17,6 @@ public class ProjectileController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"{Camera.main.transform.position} vs {transform.position}");
         if((Camera.main.transform.position - transform.position).magnitude > _despawnDistance)
         {
             Destroy(gameObject);
