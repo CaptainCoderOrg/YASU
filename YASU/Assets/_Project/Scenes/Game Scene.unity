@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 98033131}
   - component: {fileID: 98033130}
   - component: {fileID: 98033133}
+  - component: {fileID: 98033134}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -377,7 +378,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 4, z: -10}
+  FollowOffset: {x: 1, y: 4, z: -10}
 --- !u!114 &98033131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 98033129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.639999, z: -10}
+  m_LocalPosition: {x: 1, y: 9.639999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,6 +457,22 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &98033134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98033129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6178616b2ece80e46aecf715b1373e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _follow: {fileID: 98033130}
+  _player: {fileID: 1659725713}
+  _cameraLead: 7
+  _changeDuration: 2
 --- !u!1 &176274434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1112,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.639999, z: -10}
+  m_LocalPosition: {x: 1, y: 9.639999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
