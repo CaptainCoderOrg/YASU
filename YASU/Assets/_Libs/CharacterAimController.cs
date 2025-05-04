@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 
 public class CharacterAimController : MonoBehaviour
 {
-
+    [SerializeField] private ProjectileController _projectilePrefab;
     [SerializeField] private float _crossHairDistance = 5;
     [SerializeField] private GameObject _aimCrossHair;
+    [SerializeField] private GameObject _spawnPosition;
+    [SerializeField] private float _spawnDistance = 1.5f;
     public Vector2 CrossHairPosition => _aimCrossHair.transform.localPosition;
+    
+    
 
     [field: SerializeField] public bool UseMouse { get; set; } = true;
 
@@ -26,6 +31,7 @@ public class CharacterAimController : MonoBehaviour
     public void Aim(Vector2 aimDirection)
     {
         _aimCrossHair.transform.localPosition = aimDirection * _crossHairDistance;
+        _spawnPosition.transform.position = Vector2.MoveTowards(transform.position, _aimCrossHair.transform.position, _spawnDistance);
     }
 
     public void AimWithMouse(Vector2 aimDirection)
@@ -34,5 +40,11 @@ public class CharacterAimController : MonoBehaviour
         Vector2 worldSpace = (Vector2)Camera.main.ScreenToWorldPoint(aimDirection);
         Vector2 target = (worldSpace - (Vector2)transform.position).normalized;
         Aim(target);
+    }
+
+    internal void Fire()
+    {
+        ProjectileController _projectile = Instantiate(_projectilePrefab);
+        _projectile.FireTowards(_spawnPosition.transform.position, _aimCrossHair.transform.position);
     }
 }

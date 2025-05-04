@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - Projectiles
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: FG Dectorations
     uniqueID: 427902471
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1640150101
     locked: 0
   m_RenderingLayers:
   - Default

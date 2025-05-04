@@ -14,6 +14,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private GameObject _flipped;
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	[SerializeField] private float _coyoteDelay = (1f/60f)*3;
+	[SerializeField] private float _timeInAir = 0;
 	[SerializeField] private bool m_Grounded;            // Whether or not the player is grounded.
     public bool IsGrounded => m_Grounded;
     [field: SerializeField]
@@ -75,6 +76,14 @@ public class CharacterController2D : MonoBehaviour
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
+		}
+		if (!m_Grounded)
+		{
+			_timeInAir += Time.fixedDeltaTime;
+		}
+		else
+		{
+			_timeInAir = 0;
 		}
 	}
 
@@ -143,10 +152,12 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
+		if ((m_Grounded || _timeInAir < _coyoteDelay) && jump)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
+			_timeInAir = _coyoteDelay;
+			// _timeInAir = _coyoteDelay;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
         IsCrouching = crouch;

@@ -39,6 +39,17 @@ public class PlayerInputController : MonoBehaviour
         }
     }
 
+    public void HandleFire(CallbackContext callbackContext)
+    {
+        if(callbackContext.performed)
+        {
+            if(callbackContext.ReadValueAsButton())
+            {
+                _aimController.Fire();
+            }
+        }
+    }
+
     public void HandleJumpInput(CallbackContext callbackContext)
     {
         if(callbackContext.performed)
