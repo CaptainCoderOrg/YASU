@@ -4,6 +4,7 @@ public class CharacterAimController : MonoBehaviour
 {
 
     [SerializeField] private GameObject _aimCrossHair;
+    public Vector2 CrossHairPosition => _aimCrossHair.transform.localPosition;
 
     [field: SerializeField] public bool UseMouse { get; set; } = true;
 
