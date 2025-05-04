@@ -41,5 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ParallaxBG
+    uniqueID: 3454906285
+    locked: 0
+  - name: BG Decorations
+    uniqueID: 1757274193
+    locked: 0
+  - name: Platforms
+    uniqueID: 1866743383
+    locked: 0
+  - name: Player
+    uniqueID: 250950993
+    locked: 0
+  - name: FG Dectorations
+    uniqueID: 427902471
+    locked: 0
   m_RenderingLayers:
   - Default

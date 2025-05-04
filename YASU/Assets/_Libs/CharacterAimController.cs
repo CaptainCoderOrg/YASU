@@ -3,6 +3,7 @@ using UnityEngine;
 public class CharacterAimController : MonoBehaviour
 {
 
+    [SerializeField] private float _crossHairDistance = 5;
     [SerializeField] private GameObject _aimCrossHair;
     public Vector2 CrossHairPosition => _aimCrossHair.transform.localPosition;
 
@@ -24,7 +25,7 @@ public class CharacterAimController : MonoBehaviour
 
     public void Aim(Vector2 aimDirection)
     {
-        _aimCrossHair.transform.localPosition = aimDirection;
+        _aimCrossHair.transform.localPosition = aimDirection * _crossHairDistance;
     }
 
     public void AimWithMouse(Vector2 aimDirection)
