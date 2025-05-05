@@ -1,10 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHitTrigger : MonoBehaviour
 {
-    [field: SerializeField] public float Health { get; private set; } = 5;
-    [field: SerializeField] public float Damage { get; private set; } = 0;
+    [field: SerializeField] public int Health { get; private set; } = 5;
+    [SerializeField] private int _damage;
+    public int Damage
+    {
+        get => _damage;
+        set
+        {
+            _damage = value;
+            OnHealthChanged?.Invoke(Health - _damage);
+        }
+    }
+    [field: SerializeField] public UnityEvent<int> OnHealthChanged { get; private set; }
     [SerializeField] private CharacterAimController _aimController;
     [SerializeField] private CharacterController2D _characterController;
     [SerializeField] private PlayerInputController _inputController;

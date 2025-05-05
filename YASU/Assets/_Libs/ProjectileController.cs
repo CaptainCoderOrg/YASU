@@ -8,7 +8,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _despawnDistance = 20f;
-    [field: SerializeField] public float Damage { get; private set; }= 1f;
+    [field: SerializeField] public int Damage { get; private set; }= 1;
     [SerializeField] private Animator _animator;
 
     void OnEnable()
