@@ -22,6 +22,11 @@ public class LevelController : MonoBehaviour
 
     [field:SerializeField] public UnityEvent OnAllPartsFound { get; private set; }
 
+    void Start()
+    {
+        ShipParts = FindObjectsByType<ShipPartController>(FindObjectsSortMode.None).Length;
+    }
+
 
     public void LoadLevel(string sceneName)
     {
