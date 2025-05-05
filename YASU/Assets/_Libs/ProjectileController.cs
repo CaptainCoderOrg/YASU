@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    [field: SerializeField] public bool StickToParent { get; private set; } = false;
+    [field: SerializeField] public Sprite HudIcon { get; private set; }
     [SerializeField] private SelfDestructSFX _impactSFX;
     [SerializeField] private ProjectileHitTrigger _trigger;
     [SerializeField] private Rigidbody2D _rigidBody;
@@ -10,6 +12,10 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private float _despawnDistance = 20f;
     [field: SerializeField] public int Damage { get; private set; }= 1;
     [SerializeField] private Animator _animator;
+
+    [SerializeField] private Transform _attached;
+    private GameObject _pivot;
+    [SerializeField] private Vector2 _attachedVector;
 
     void OnEnable()
     {
@@ -52,6 +58,22 @@ public class ProjectileController : MonoBehaviour
         if((Camera.main.transform.position - transform.position).magnitude > _despawnDistance)
         {
             Destroy(gameObject);
+            if (_pivot != null)
+            {
+                Destroy(_pivot);
+            }
         }
+        else if (_pivot != null && _attached != null)
+        {
+            // _pivot.transform.position = _attached.transform.position;
+        }
+    }
+
+    internal void Attach(Transform attachTo)
+    {
+        // _pivot = new GameObject("pivot");
+        // _attached = attachTo;
+        // transform.SetParent(_pivot.transform, false);
+        // _pivot.transform.position = attachTo.position;
     }
 }

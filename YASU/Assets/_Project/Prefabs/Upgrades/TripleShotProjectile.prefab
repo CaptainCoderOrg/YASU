@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63efdb997f22bab4b8099efedca6586f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <HudIcon>k__BackingField: {fileID: 161939906, guid: 8acb416d59db4c04e8cfa9ea73003fed, type: 3}
+  _impactSFX: {fileID: 0}
   _trigger: {fileID: 4118810557705953051}
   _rigidBody: {fileID: 3218712775823548939}
   _projectileSpeed: 0

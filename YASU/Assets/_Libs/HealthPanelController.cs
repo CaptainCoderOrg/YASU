@@ -11,6 +11,7 @@ public class HealthPanelController : MonoBehaviour
         {
             _healthPills[ix].IsDamaged = false;
         }
+        
         for (; ix < _healthPills.Length; ix++)
         {
             _healthPills[ix].IsDamaged = true;

@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class CharacterAimController : MonoBehaviour
 {
     [SerializeField] private ProjectileController _basicProjectilePrefab;
     [SerializeField] private ProjectileController _projectilePrefab;
+    [SerializeField] private Image _weaponIcon;
     [SerializeField] private int _ammo = 0;
     public int Ammo
     {
@@ -27,8 +29,9 @@ public class CharacterAimController : MonoBehaviour
     
     public void CollectProjectile(ProjectileController projectile, int ammo)
     {
+        _weaponIcon.sprite = projectile.HudIcon;
         _projectilePrefab = projectile;
-        Ammo += ammo;
+        Ammo = ammo;
     }
 
     [field: SerializeField] public bool UseMouse { get; set; } = true;
@@ -65,7 +68,11 @@ public class CharacterAimController : MonoBehaviour
     {
         Ammo = Mathf.Max(0, Ammo - 1);
         ProjectileController toSpawn = Ammo > 0 ? _projectilePrefab : _basicProjectilePrefab;
-        ProjectileController _projectile = Instantiate(toSpawn);
-        _projectile.FireTowards(_spawnPosition.transform.position, _aimCrossHair.transform.position);
+        ProjectileController projectile = Instantiate(toSpawn);
+        if (projectile.StickToParent)
+        {
+            projectile.transform.parent = _spawnPosition.transform;
+        }
+        projectile.FireTowards(_spawnPosition.transform.position, _aimCrossHair.transform.position);
     }
 }

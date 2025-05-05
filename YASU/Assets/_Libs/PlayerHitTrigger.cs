@@ -38,6 +38,7 @@ public class PlayerHitTrigger : MonoBehaviour
     [SerializeField] private Animator _deathAnimator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private LevelController _levelController;
+    bool _isDead = false;
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class PlayerHitTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isDead) { return; }
         if (collision.TryGetComponent<WeaponUpgradeController>(out var upgrade))
         {
             upgrade.Collect(_aimController);
@@ -58,6 +60,7 @@ public class PlayerHitTrigger : MonoBehaviour
 
     public void DisablePlayer()
     {
+        _isDead = true;
         _aimController.gameObject.SetActive(false);
         _inputController.gameObject.SetActive(false);
         _characterController.enabled = false;
@@ -77,6 +80,7 @@ public class PlayerHitTrigger : MonoBehaviour
 
     internal void Hit(ProjectileController projectileController)
     {
+        if (_isDead) { return; }
         Damage += projectileController.Damage;
         if (Health <= 0)
         {
