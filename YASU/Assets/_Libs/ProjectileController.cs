@@ -25,6 +25,10 @@ public class ProjectileController : MonoBehaviour
         _animator.SetTrigger("Hit");
         _rigidBody.linearVelocity = Vector2.zero;
         _trigger.OnHit -= HandleHit;
+        if (d.TryGetComponent<PlayerHitTrigger>(out var playerHitTrigger))
+        {
+            playerHitTrigger.Hit(this);
+        }
     }
 
     public void CleanUp()
