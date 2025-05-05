@@ -4,18 +4,31 @@ using UnityEngine.Events;
 
 public class PlayerHitTrigger : MonoBehaviour
 {
-    [field: SerializeField] public int Health { get; private set; } = 5;
+    [field: SerializeField] public int MaxHealth { get; private set; } = 5;
+    public int Health => MaxHealth - Damage;
+    
     [SerializeField] private int _damage;
     public int Damage
     {
         get => _damage;
         set
         {
+            int previous = Health;
             _damage = value;
-            OnHealthChanged?.Invoke(Health - _damage);
+            OnHealthChanged?.Invoke(Health);
+            if (previous > Health)
+            {
+                OnDamaged?.Invoke();
+            }
+            if (previous < Health)
+            {
+                OnHealed?.Invoke();
+            }
         }
     }
     [field: SerializeField] public UnityEvent<int> OnHealthChanged { get; private set; }
+    [field: SerializeField] public UnityEvent OnDamaged { get; private set; }
+    [field: SerializeField] public UnityEvent OnHealed { get; private set; }
     [SerializeField] private CharacterAimController _aimController;
     [SerializeField] private CharacterController2D _characterController;
     [SerializeField] private PlayerInputController _inputController;
@@ -64,7 +77,7 @@ public class PlayerHitTrigger : MonoBehaviour
     internal void Hit(ProjectileController projectileController)
     {
         Damage += projectileController.Damage;
-        if (Damage >= Health)
+        if (Health <= 0)
         {
             Death();
         }

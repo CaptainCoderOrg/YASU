@@ -194,3 +194,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 8182686942050374414, guid: 2bfdccd5889a9bc428ca82b364731ae0, type: 3}
   _ammo: 20
+  _collectSound: {fileID: 7089684606285831019, guid: 17aa9da80edd6dd4482c5b33f6ba5f7c, type: 3}
