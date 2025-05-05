@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterAimController : MonoBehaviour
 {
@@ -11,14 +12,18 @@ public class CharacterAimController : MonoBehaviour
         get => _ammo;
         private set
         {
-            _ammo = value;
+            if (_ammo == value) { return; }
+            _ammo = Mathf.Clamp(value, 0, 30);
+            OnAmmoChanged?.Invoke(_ammo);
         }
     }
+    [field: SerializeField] public UnityEvent<int> OnAmmoChanged;
     [SerializeField] private float _crossHairDistance = 5;
     [SerializeField] private GameObject _aimCrossHair;
     [SerializeField] private GameObject _spawnPosition;
     [SerializeField] private float _spawnDistance = 1.5f;
     public Vector2 CrossHairPosition => _aimCrossHair.transform.localPosition;
+    
     
     public void CollectProjectile(ProjectileController projectile, int ammo)
     {

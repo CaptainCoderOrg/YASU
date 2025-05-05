@@ -68,16 +68,25 @@ public class PlayerHitTrigger : MonoBehaviour
 
     private void Death()
     {
+        Damage = MaxHealth;
         DisablePlayer();
         _spriteRenderer.enabled = false;
         _deathAnimator.gameObject.SetActive(true);
-
+        
     }
 
     internal void Hit(ProjectileController projectileController)
     {
         Damage += projectileController.Damage;
         if (Health <= 0)
+        {
+            Death();
+        }
+    }
+
+    void Update()
+    {
+        if (transform.position.y < -1000)
         {
             Death();
         }

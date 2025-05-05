@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class LevelController : MonoBehaviour
 {
     [field: SerializeField] public int ShipParts { get; private set; }
     [SerializeField] private int _partsFound;
+    [SerializeField] private TextMeshProUGUI _partsIndicator;
     public int PartsFound 
     { 
         get => _partsFound; 
@@ -17,6 +19,7 @@ public class LevelController : MonoBehaviour
             {
                 OnAllPartsFound?.Invoke();
             }
+            _partsIndicator.text = $"{_partsFound}/{ShipParts}";
         }
     }
 
