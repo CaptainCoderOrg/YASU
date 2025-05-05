@@ -9,6 +9,8 @@ public class PlayerCameraHelper : MonoBehaviour
     [SerializeField] private float _cameraLead = 7;
     private float _targetXOffset = 0;
     [SerializeField] private float _changeDuration = 2f;
+    [SerializeField] private float _changeDelay = 2f;
+    private float _changeCountDown;
 
     void Update()
     {
@@ -16,9 +18,17 @@ public class PlayerCameraHelper : MonoBehaviour
         float targetX = _cameraLead * (_player.IsFlipped ? -1 : 1);
         if (_targetXOffset != targetX)
         {
-            StopAllCoroutines();
-            _targetXOffset = targetX;
-            StartCoroutine(TweenOffset());
+            _changeCountDown -= Time.deltaTime;
+            if (_changeCountDown <= 0)
+            {
+                StopAllCoroutines();
+                _targetXOffset = targetX;
+                StartCoroutine(TweenOffset());
+            }
+        }
+        else
+        {
+            _changeCountDown = _changeDelay;
         }
     }
 
@@ -30,7 +40,7 @@ public class PlayerCameraHelper : MonoBehaviour
         float elapsed = 0;
         while (elapsed < _changeDuration)
         {
-            _follow.FollowOffset = Vector3.Lerp(start, end, elapsed/_changeDuration);
+            _follow.FollowOffset = Vector3.Lerp(start, end, elapsed / _changeDuration);
             yield return null;
             elapsed += Time.deltaTime;
         }

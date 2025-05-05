@@ -3,14 +3,28 @@ using UnityEngine;
 
 public class CharacterAimController : MonoBehaviour
 {
+    [SerializeField] private ProjectileController _basicProjectilePrefab;
     [SerializeField] private ProjectileController _projectilePrefab;
+    [SerializeField] private int _ammo = 0;
+    public int Ammo
+    {
+        get => _ammo;
+        private set
+        {
+            _ammo = value;
+        }
+    }
     [SerializeField] private float _crossHairDistance = 5;
     [SerializeField] private GameObject _aimCrossHair;
     [SerializeField] private GameObject _spawnPosition;
     [SerializeField] private float _spawnDistance = 1.5f;
     public Vector2 CrossHairPosition => _aimCrossHair.transform.localPosition;
     
-    
+    public void CollectProjectile(ProjectileController projectile, int ammo)
+    {
+        _projectilePrefab = projectile;
+        Ammo += ammo;
+    }
 
     [field: SerializeField] public bool UseMouse { get; set; } = true;
 
@@ -44,7 +58,9 @@ public class CharacterAimController : MonoBehaviour
 
     internal void Fire()
     {
-        ProjectileController _projectile = Instantiate(_projectilePrefab);
+        Ammo = Mathf.Max(0, Ammo - 1);
+        ProjectileController toSpawn = Ammo > 0 ? _projectilePrefab : _basicProjectilePrefab;
+        ProjectileController _projectile = Instantiate(toSpawn);
         _projectile.FireTowards(_spawnPosition.transform.position, _aimCrossHair.transform.position);
     }
 }

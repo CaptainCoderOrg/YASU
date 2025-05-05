@@ -32,7 +32,7 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void FireTowards(Vector2 start, Vector2 target)
+    public virtual void FireTowards(Vector2 start, Vector2 target)
     {
         Vector2 normalized = target - start;
         float angle = Mathf.Atan2(normalized.y, normalized.x) * Mathf.Rad2Deg;
