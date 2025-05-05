@@ -38,10 +38,8 @@ public class Mk2Controller : MonoBehaviour
 
     public void PerformAttack()
     {
-        Debug.Log("Preforming attack!");
         foreach (Transform t in _projectilePositions)
         {
-            Debug.Log("Spawning projectil!");
             ProjectileController p = Instantiate(_projectile);
             p.FireTowards(_projectileSpawn.position, t.position);
         }

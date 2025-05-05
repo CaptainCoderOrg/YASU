@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Mk1Controller : MonoBehaviour
 {
+    [SerializeField] private CharacterController2D _player;
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private bool _isActive;
     [SerializeField] private float _activationDistance = 20;
@@ -21,6 +22,7 @@ public class Mk1Controller : MonoBehaviour
 
     void Awake()
     {
+        _player = FindFirstObjectByType<CharacterController2D>();
         _waitForCharge = new WaitForSeconds(_chargeDelay);
         _waitForFire = new WaitForSeconds(_fireDelay);
     }
@@ -34,6 +36,9 @@ public class Mk1Controller : MonoBehaviour
         }
 
         if (!_isActive) { return; }
+        Vector3 local = transform.localScale;
+        local.x = _player.transform.position.x < transform.position.x ? 1 : -1;
+        transform.localScale = local;
         if (_running != null) { return; }
 
         _running = StartCoroutine(Activate());
@@ -55,7 +60,7 @@ public class Mk1Controller : MonoBehaviour
             yield return _waitForCharge;
             _animator.SetTrigger("Fire");
             ProjectileController newProjectile = Instantiate(_projectile);
-            newProjectile.FireTowards(_projectileSpawn.transform.position, _projectileAim.transform.position);
+            newProjectile.FireTowards(_projectileSpawn.transform.position, _player.transform.position);
             _animator.SetTrigger("MoveLeft");
             yield return _waitForFire;
             _move = 0;
@@ -63,7 +68,7 @@ public class Mk1Controller : MonoBehaviour
             yield return _waitForCharge;
             _animator.SetTrigger("Fire");
             newProjectile = Instantiate(_projectile);
-            newProjectile.FireTowards(_projectileSpawn.transform.position, _projectileAim.transform.position);
+            newProjectile.FireTowards(_projectileSpawn.transform.position, _player.transform.position);
             _animator.SetTrigger("MoveRight");
             yield return _waitForFire;
         }

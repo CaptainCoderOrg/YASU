@@ -532,9 +532,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45980df27f40fe441a14eec99bc53adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _rigidBody: {fileID: 3488194972688158324}
   _isActive: 0
-  _activationDistance: 20
+  _activationDistance: 14
   _projectile: {fileID: 1198268025243794179, guid: c2d199a5637d06e46889fd5a549992c6, type: 3}
   _projectileSpawn: {fileID: 3530387238692299132}
   _projectileAim: {fileID: 1716587389007565029}
