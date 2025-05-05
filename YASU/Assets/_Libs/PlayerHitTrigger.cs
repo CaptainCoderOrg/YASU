@@ -10,6 +10,8 @@ public class PlayerHitTrigger : MonoBehaviour
     [SerializeField] private PlayerInputController _inputController;
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private Collider2D _hitbox;
+    [SerializeField] private Collider2D _footbox;
+    
     [SerializeField] private Animator _deathAnimator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
@@ -31,7 +33,8 @@ public class PlayerHitTrigger : MonoBehaviour
         _inputController.gameObject.SetActive(false);
         _characterController.enabled = false;
         _spriteRenderer.enabled = false;
-        _hitbox.enabled = false;
+        _hitbox.gameObject.SetActive(false);
+        _footbox.gameObject.SetActive(false);
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         _deathAnimator.gameObject.SetActive(true);
 

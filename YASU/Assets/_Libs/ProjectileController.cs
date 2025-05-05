@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    [SerializeField] private SelfDestructSFX _impactSFX;
     [SerializeField] private ProjectileHitTrigger _trigger;
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private float _projectileSpeed;
@@ -22,6 +23,7 @@ public class ProjectileController : MonoBehaviour
 
     private void HandleHit(Collider2D d)
     {
+        Instantiate(_impactSFX);
         _animator.SetTrigger("Hit");
         _rigidBody.linearVelocity = Vector2.zero;
         _trigger.OnHit -= HandleHit;
