@@ -11,9 +11,14 @@ public class PlayerHitTrigger : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private Collider2D _hitbox;
     [SerializeField] private Collider2D _footbox;
-    
     [SerializeField] private Animator _deathAnimator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private LevelController _levelController;
+
+    void Awake()
+    {
+        _levelController = FindFirstObjectByType<LevelController>();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,19 +28,24 @@ public class PlayerHitTrigger : MonoBehaviour
         }
         else if (collision.TryGetComponent<ShipPartController>(out var shipPart))
         {
-            shipPart.Collect(_characterController);
+            shipPart.Collect(_characterController, _levelController);
         }
     }
 
-    private void Death()
+    public void DisablePlayer()
     {
         _aimController.gameObject.SetActive(false);
         _inputController.gameObject.SetActive(false);
         _characterController.enabled = false;
-        _spriteRenderer.enabled = false;
         _hitbox.gameObject.SetActive(false);
         _footbox.gameObject.SetActive(false);
         _rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    private void Death()
+    {
+        DisablePlayer();
+        _spriteRenderer.enabled = false;
         _deathAnimator.gameObject.SetActive(true);
 
     }
