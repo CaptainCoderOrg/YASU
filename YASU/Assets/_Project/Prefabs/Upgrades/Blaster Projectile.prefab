@@ -229,7 +229,7 @@ MonoBehaviour:
   _rigidBody: {fileID: 2424371576791966494}
   _projectileSpeed: 20
   _despawnDistance: 20
-  <Damage>k__BackingField: 1
+  <Damage>k__BackingField: 3
   _animator: {fileID: 6510595287235191818}
   _attached: {fileID: 0}
   _attachedVector: {x: 0, y: 0}

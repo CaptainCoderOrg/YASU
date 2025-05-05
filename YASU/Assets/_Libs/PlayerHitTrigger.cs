@@ -14,7 +14,7 @@ public class PlayerHitTrigger : MonoBehaviour
         set
         {
             int previous = Health;
-            _damage = value;
+            _damage = Mathf.Clamp(value, 0, MaxHealth);
             OnHealthChanged?.Invoke(Health);
             if (previous > Health)
             {
@@ -54,7 +54,7 @@ public class PlayerHitTrigger : MonoBehaviour
         }
         else if (collision.TryGetComponent<ShipPartController>(out var shipPart))
         {
-            shipPart.Collect(_characterController, _levelController);
+            shipPart.Collect(_characterController, this, _levelController);
         }
     }
 

@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 8217073130366720637}
   - component: {fileID: 2197319104953370281}
   - component: {fileID: 3572125730426658960}
+  - component: {fileID: 5857820472518867901}
   m_Layer: 0
   m_Name: Mk2
   m_TagString: Untagged
@@ -311,6 +312,22 @@ MonoBehaviour:
   _hitTrigger: {fileID: 3979213107338087421}
   _health: 5
   _damage: 0
+--- !u!114 &5857820472518867901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108870382165541879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259f13df5cb83e04d9d916394e6522d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleDrops:
+  - {fileID: 10972186950678758, guid: 80a8356abe93c4a47acd508d883f925e, type: 3}
+  - {fileID: 10972186950678758, guid: 96d036a346885e940a9e0437245635e4, type: 3}
+  - {fileID: 10972186950678758, guid: aa87e58a437e4274a8b539219bb5ef02, type: 3}
 --- !u!1 &4780144303363577745
 GameObject:
   m_ObjectHideFlags: 0
